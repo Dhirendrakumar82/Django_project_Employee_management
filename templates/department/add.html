@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+        <h3>Add Department</h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label>Department Name</label>
+                {{ form.department_name }}
+            </div>
+
+            <div class="mb-3">
+                <label>Department Code</label>
+                {{ form.department_code }}
+            </div>
+
+            <div class="mb-3">
+                <label>Manager Name</label>
+                {{ form.manager_name }}
+            </div>
+
+            <div class="mb-3">
+                <label>Location</label>
+                {{ form.location }}
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Save Department
+            </button>
+
+            <a href="{% url 'department_list' %}"
+               class="btn btn-secondary">
+               Back
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

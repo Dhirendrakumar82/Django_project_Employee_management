@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Payroll Management</h2>
+
+    <a href="{% url 'payroll_add' %}" class="btn btn-success">
+        Add Payroll
+    </a>
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Employee</th>
+            <th>Salary</th>
+            <th>Bonus</th>
+            <th>Deduction</th>
+            <th>Net Salary</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for p in payrolls %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.employee }}</td>
+            <td>{{ p.salary }}</td>
+            <td>{{ p.bonus }}</td>
+            <td>{{ p.deduction }}</td>
+            <td>{{ p.net_salary }}</td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">
+                No Payroll Records Found
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}
+
+

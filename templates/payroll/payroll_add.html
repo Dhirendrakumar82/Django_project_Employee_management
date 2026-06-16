@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h3>Add Payroll</h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label>Employee</label>
+                <select name="employee" class="form-control">
+                    {% for emp in employees %}
+                    <option value="{{ emp.id }}">
+                        {{ emp.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Salary</label>
+                <input type="number" name="salary"
+                       class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Bonus</label>
+                <input type="number" name="bonus"
+                       class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Deduction</label>
+                <input type="number" name="deduction"
+                       class="form-control">
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Save Payroll
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

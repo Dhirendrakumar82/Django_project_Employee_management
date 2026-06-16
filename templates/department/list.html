@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2>Department List</h2>
+
+    <a href="{% url 'department_add' %}"
+       class="btn btn-success">
+       Add Department
+    </a>
+
+</div>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Department</th>
+            <th>Code</th>
+            <th>Manager</th>
+            <th>Location</th>
+            <th width="180">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for d in departments %}
+
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.department_name }}</td>
+            <td>{{ d.department_code }}</td>
+            <td>{{ d.manager_name }}</td>
+            <td>{{ d.location }}</td>
+
+            <td>
+                <a href="{% url 'department_edit' d.id %}"
+                   class="btn btn-warning btn-sm">
+                   Edit
+                </a>
+
+                <a href="{% url 'department_delete' d.id %}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Delete Department?')">
+                   Delete
+                </a>
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center text-danger">
+                No Department Found
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
+
+
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2>Department List</h2>
+
+    <a href="{% url 'department_add' %}"
+       class="btn btn-success">
+       Add Department
+    </a>
+
+</div>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Department</th>
+            <th>Code</th>
+            <th>Manager</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for d in departments %}
+
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.department_name }}</td>
+            <td>{{ d.department_code }}</td>
+            <td>{{ d.manager_name }}</td>
+            <td>{{ d.location }}</td>
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="5"
+                class="text-center text-danger">
+                No Department Found
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %} {% endcomment %}
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Department List</h2>
+
+<a href="/department/add/"
+class="btn btn-success">
+Add Department
+</a>
+
+<table class="table mt-3">
+
+<tr>
+<th>ID</th>
+<th>Department Name</th>
+</tr>
+
+{% for d in departments %}
+
+<tr>
+
+<td>{{ d.id }}</td>
+
+<td>{{ d.department_name }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %} {% endcomment %}
